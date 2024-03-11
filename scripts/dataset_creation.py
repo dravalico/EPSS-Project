@@ -5,7 +5,7 @@ import glob
 import json
 
 
-def init(threshold=0.7, storage_path='../datasets'):
+def init(threshold=0.7, storage_path='../datasets_new'):
     if not os.path.exists(storage_path):
         os.mkdir(storage_path)
     complete_dataset_path = os.path.join(storage_path, 'dataset.csv')
@@ -67,12 +67,6 @@ def download_dataset_and_extract_cve_kev():
     df_kev_sheet = pd.read_csv(url)
     cve_kev = set(df_kev_sheet['cveID'].dropna().apply(lambda r: r if 'CVE' in r else None).dropna())
     return df_kev_sheet, cve_kev
-
-
-def save_or_read_filtered_df(df, cve_list, path, name):
-    df_res = df[df['cve'].isin(cve_list)]
-    df_res.to_csv(os.path.join(path, name + '.csv'), index=False)
-    df_res.to_pickle(os.path.join(path, name + '.pkl'))
 
 
 if __name__ == '__main__':
