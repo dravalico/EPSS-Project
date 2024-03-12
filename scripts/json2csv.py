@@ -76,5 +76,5 @@ for file_path in tqdm(file_paths, desc="Processing files", unit="file"):
         
 df = pd.DataFrame(data)
 df = df.sort_values(by=['id'])
-df.to_csv(f'../datasets/cve_info.csv', index=False)
+df.to_csv(f'../datasets_new/cve_info.csv', index=False)
 

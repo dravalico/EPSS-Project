@@ -47,8 +47,6 @@ class CVECrawler:
                     with open('still_missing.txt', 'a') as f:
                             f.write(cve + '\n')
                 time.sleep(6)
-                with open('index.txt', 'w') as f:
-                    f.write(cve)
 
     def add_references_to_json_and_save(self, response_json):
         json_list = response_json['vulnerabilities']
@@ -96,7 +94,7 @@ class CVECrawler:
             with open(os.path.join(one_digit_path, f'CVE-{year}-{cve_padded}.json'), 'w') as file:
                 file.write(json.dumps(json_data))
         except Exception as e:
-            print(f"err  {e}")
+            print(f"err {e}")
 
 
 CVECrawler().run()
