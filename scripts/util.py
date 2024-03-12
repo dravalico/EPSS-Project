@@ -6,9 +6,11 @@ import os
 import numpy as np
 
 
-def plot_cve_timeseries_of(dataset, cve_list):
+def plot_cve_timeseries_of(dataset, cve_list=None):
     path = f"outputs/timeseries_{str(datetime.datetime.now()).replace(' ', '')}"
     os.mkdir(path)
+    if cve_list is None:
+        cve_list = list(dataset['cve'].unique())
     for cve in cve_list:
         full_path = os.path.join(path, f'{cve}.png')
         data = dataset[dataset['cve'] == cve][['epss', 'date', 'percentile']]
