@@ -50,6 +50,7 @@ class CVECrawler:
 
     def add_references_to_json_and_save(self, response_json):
         json_list = response_json['vulnerabilities']
+        print(response_json)
         logging.info("Adding raw references to items")
         for e in json_list:
             complete_json = self.fetch_and_add_references_to_json(e)
