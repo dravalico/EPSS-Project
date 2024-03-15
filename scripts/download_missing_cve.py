@@ -40,12 +40,12 @@ class CVECrawler:
                         print(f"ok {cve}")
                     else:
                         print(f"err {cve}, err: {response.status_code}")
-                        with open('still_missing.txt', 'a') as f:
-                            f.write(cve + '\n')
+                        # with open('still_missing.txt', 'a') as f:
+                            # f.write(cve + '\n')
                 except Exception as e:
                     print(f"err {cve}, exp: {e}")
-                    with open('still_missing.txt', 'a') as f:
-                            f.write(cve + '\n')
+                    # with open('still_missing.txt', 'a') as f:
+                            # f.write(cve + '\n')
                 time.sleep(6)
 
     def add_references_to_json_and_save(self, response_json):
